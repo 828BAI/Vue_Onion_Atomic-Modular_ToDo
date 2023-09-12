@@ -21,7 +21,7 @@ services:
       - 80:5173
       - 443:5173
     volumes:
-      - ./VueOnion&Atomic(Modular):/app
+      - ./Vue_Onion_Atomic-Modular_ToDo:/app
       - vue_node_modules_volume:/app/node_modules
     working_dir: /app
     command: >
