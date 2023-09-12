@@ -12,5 +12,5 @@
 
 ## Details
 
-- Vue app based on onion + modular (modular) architecture (very close to feature sliced architecture)
+- Vue app based on onion + atomic (modular) architecture (very close to feature sliced architecture)
 - Nestjs app based on onion architecture
