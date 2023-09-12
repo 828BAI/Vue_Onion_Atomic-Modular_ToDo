@@ -7,6 +7,9 @@
 1. Start Docker
 2. Copy repository
 3. Run this command `docker-compose up --build`
+4. Wait compose finish
+5. app available at `http://localhost/`
+         - notice port 80 non secure
 
 
 
