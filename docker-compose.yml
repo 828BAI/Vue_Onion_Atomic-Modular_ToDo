@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:alpine
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+
+  
+  vue:
+    container_name: vue
+    image: node:alpine
+    ports:
+      - 80:5173
+      - 443:5173
+    volumes:
+      - ./VueOnion&Atomic(Modular):/app
+      - vue_node_modules_volume:/app/node_modules
+    working_dir: /app
+    command: >
+      sh -c "
+        npm i
+        npm start
+      "
+
+  nestjs:
+    container_name: nest
+    image: node:alpine
+    ports:
+      - 3000:3000
+    volumes:
+      - ./NestOnion:/app
+      - nest_node_modules_volume:/app/node_modules
+    working_dir: /app
+    command: >
+      sh -c "
+        npm i
+        node database/initDB.js
+        npm run start:dev
+      "
+
+volumes:
+  postgres_volume:
+  vue_node_modules_volume:
+  nest_node_modules_volume:
+
